@@ -1,1 +1,5 @@
-export * from './auth.service'; 
+import jwtService from './jwt.service';
+
+export default {
+  jwtService,
+};

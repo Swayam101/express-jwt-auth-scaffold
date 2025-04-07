@@ -1,5 +1,11 @@
-export * from './models';
-export * from './controllers';
-export * from './services';
-export * from './validations';
-export { default as userRoutes } from './routes/user.routes'; 
+import controllers from './controllers';
+import dao from './dao';
+import models from './models';
+import routes from './routes';
+
+export default {
+  controllers,
+  models,
+  dao,
+  routes,
+};

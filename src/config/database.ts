@@ -4,7 +4,7 @@ import { logger } from '../utils/logger';
 export const connectDB = async (): Promise<void> => {
   try {
     const mongoURI = process.env.MONGODB_URI;
-    
+
     if (!mongoURI) {
       throw new Error('MongoDB URI is not defined in environment variables');
     }
@@ -15,4 +15,4 @@ export const connectDB = async (): Promise<void> => {
     logger.error('MongoDB Connection Error:', error);
     process.exit(1);
   }
-}; 
+};

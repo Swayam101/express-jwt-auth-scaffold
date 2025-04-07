@@ -1,5 +1,13 @@
-export * from './controllers';
-export * from './services';
-export * from './validations';
-export * from './middleware';
-export { default as authRoutes } from './routes/auth.routes'; 
+import controllers from './controllers';
+import middlewares from './middleware';
+import routes from './routes';
+import services from './services';
+import validations from './validations';
+
+export default {
+  controllers,
+  routes,
+  validations,
+  middlewares,
+  services,
+};

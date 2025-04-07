@@ -13,5 +13,5 @@ export const validate = (schema: AnyObjectSchema) => {
     } catch (error) {
       return res.status(400).json({ message: (error as Error).message });
     }
-  }
-}
+  };
+};

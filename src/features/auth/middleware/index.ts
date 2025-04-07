@@ -1,1 +1,6 @@
-export * from './auth.middleware'; 
+import { checkRoleAccess, protectRoute } from './auth.middleware';
+
+export default {
+  protectRoute,
+  checkRoleAccess,
+};
