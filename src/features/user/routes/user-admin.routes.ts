@@ -7,7 +7,7 @@ const { middlewares } = auth;
 
 const router = Router();
 
-router.post('/users', middlewares.checkRoleAccess(ERoles.ADMIN), controller.getAllUsers);
-router.post('/user/:id', middlewares.checkRoleAccess(ERoles.ADMIN), controller.getUserById);
+router.get('/users', middlewares.checkRoleAccess(ERoles.ADMIN), controller.getAllUsers);
+router.get('/user/:id', middlewares.checkRoleAccess(ERoles.ADMIN), controller.getUserById);
 
 export default router;

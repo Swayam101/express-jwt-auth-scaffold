@@ -19,7 +19,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     }
 
     const token = auth.services.jwtService.generateJwtToken(user._id.toString());
-    const { password: _, ...currentUser } = user;
+    const { password: _, ...currentUser } = user.toObject();
 
     return JsonResponse(res, {
       status: 'success',

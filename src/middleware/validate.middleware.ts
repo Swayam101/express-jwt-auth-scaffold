@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { AnyObjectSchema } from 'yup';
+import { JsonResponse } from '../utils/jsonReponse.utils';
 
 export const validate = (schema: AnyObjectSchema) => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -11,7 +12,12 @@ export const validate = (schema: AnyObjectSchema) => {
       });
       return next();
     } catch (error) {
-      return res.status(400).json({ message: (error as Error).message });
+      return JsonResponse(res, {
+        status: "error",
+        statusCode: 400,
+        message: (error as Error).message,
+        title: "VALIDATION ERROR",
+      });
     }
   };
 };

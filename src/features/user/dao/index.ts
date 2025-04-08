@@ -3,10 +3,13 @@ import { ObjectId } from 'mongodb';
 
 import models from '../models';
 import { IUser } from '../models/user.model';
+import paginate from '../../../utils/paginate.util';
+import { FilterQuery } from 'mongoose';
+import { IPaging } from '../../../interfaces';
 
 export default {
-  getAllUsers: () => {
-    return models.User.find();
+  getAllUsers: (filter: FilterQuery<IUser>, { page, limit }: IPaging) => {
+    return paginate(models.User, filter, page, limit)
   },
   getUserById: (id: ObjectId) => {
     return models.User.findById(id);

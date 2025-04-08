@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-// import { logger } from '../../../utils/logger';
+import { logger } from '../../../utils/logger';
 import userFeat from '../../user';
 import services from '../services';
 import { JsonResponse } from '../../../utils/jsonReponse.utils';
@@ -20,7 +20,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     }
 
     const user = await userFeat.dao.createUser({ email, password, name, role: 'user' });
-    const { password: _, ...currentUser } = user;
+    const { password: _, ...currentUser } = user.toObject();
 
     const token = services.jwtService.generateJwtToken(user._id.toString());
 
@@ -35,7 +35,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       },
     });
   } catch (error) {
-    // logger.error('Register Error:', error);
+    logger.error('Register Error:', error);
     return JsonResponse(res, {
       status: 'error',
       statusCode: 500,

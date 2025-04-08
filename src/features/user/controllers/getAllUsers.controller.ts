@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 import { JsonResponse } from '../../../utils/jsonReponse.utils';
 import dao from '../dao';
 
-export default async (_: Request, res: Response) => {
-  const users = await dao.getAllUsers();
+export default async (req: Request, res: Response) => {
+  const { page, limit } = req.query
+
+  const users = await dao.getAllUsers({ role: "user" }, { page: parseInt(page?.toString() ?? "1"), limit: parseInt(limit?.toString() ?? "10") });
 
   return JsonResponse(res, {
     status: 'success',

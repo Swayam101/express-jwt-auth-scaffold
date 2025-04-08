@@ -1,11 +1,9 @@
 import express from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { connectDB } from './config/database';
 import { logger } from './utils/logger';
 import registerRoutesUtils from './utils/registerRoutes.utils';
-
-// Load environment variables
 dotenv.config();
 
 const app = express();
