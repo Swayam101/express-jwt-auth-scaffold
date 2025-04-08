@@ -10,6 +10,6 @@ router.post('/register', validate(validations.registerSchema), controller.regist
 
 router.post('/login', validate(validations.loginSchema), controller.login);
 
-router.get("/profile", middleware.protectRoute, controller.userProfile)
+router.get('/profile', middleware.protectRoute, controller.userProfile);
 
 export default router;

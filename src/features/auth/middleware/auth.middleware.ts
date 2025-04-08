@@ -30,7 +30,7 @@ export const protectRoute = async (req: Request, res: Response, next: NextFuncti
     }
 
     const decoded = services.jwtService.verifyJwtToken(token) as JwtPayload & { _id: string };
-    console.log("decoded : ", decoded);
+    console.log('decoded : ', decoded);
 
     const user = await userFeat.dao.getUserById(new ObjectId(decoded._id));
 
@@ -60,17 +60,17 @@ export const protectRoute = async (req: Request, res: Response, next: NextFuncti
 
 export const checkRoleAccess =
   (...roles: ERoles[]) =>
-    (_req: Request, res: Response, next: NextFunction) => {
-      const currentUserRole = res.locals.user.role;
+  (_req: Request, res: Response, next: NextFunction) => {
+    const currentUserRole = res.locals.user.role;
 
-      if (roles.includes(currentUserRole)) {
-        return next();
-      } else {
-        return JsonResponse(res, {
-          status: 'error',
-          statusCode: 401,
-          message: 'Access Forbidden',
-          title: 'UNAUTHORISED ACCESS',
-        });
-      }
-    };
+    if (roles.includes(currentUserRole)) {
+      return next();
+    } else {
+      return JsonResponse(res, {
+        status: 'error',
+        statusCode: 401,
+        message: 'Access Forbidden',
+        title: 'UNAUTHORISED ACCESS',
+      });
+    }
+  };

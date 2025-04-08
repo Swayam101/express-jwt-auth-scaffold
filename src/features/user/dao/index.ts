@@ -9,7 +9,7 @@ import { IPaging } from '../../../interfaces';
 
 export default {
   getAllUsers: (filter: FilterQuery<IUser>, { page, limit }: IPaging) => {
-    return paginate(models.User, filter, page, limit)
+    return paginate(models.User, filter, page, limit);
   },
   getUserById: (id: ObjectId) => {
     return models.User.findById(id);

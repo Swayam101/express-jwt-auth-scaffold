@@ -6,5 +6,5 @@ import { register } from './register.controller';
 export default {
   login: asyncWrapper(login),
   register: asyncWrapper(register),
-  userProfile: asyncWrapper(getUserProfileController)
+  userProfile: asyncWrapper(getUserProfileController),
 };

@@ -13,10 +13,10 @@ export const validate = (schema: AnyObjectSchema) => {
       return next();
     } catch (error) {
       return JsonResponse(res, {
-        status: "error",
+        status: 'error',
         statusCode: 400,
         message: (error as Error).message,
-        title: "VALIDATION ERROR",
+        title: 'VALIDATION ERROR',
       });
     }
   };
